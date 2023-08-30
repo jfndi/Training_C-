@@ -7,5 +7,5 @@ cases is not a guarantee to see your solution being accepted, I have been there)
 at the proposed solution, work on it, understand it and find your own way to resolve based on this
 new information. Believe me, it does worth the pain.
 
-Regarding the statement of HackerRank challenges, you can find them [here](https://www.hackerrank.com/dashboard)
+Regarding the statement of HackerRank challenges, you can find them [here](https://www.hackerrank.com/dashboard).
 Select C++ in the dashboard and here you are. Sign up is free for developers.
