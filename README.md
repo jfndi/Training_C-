@@ -5,4 +5,4 @@ That being said, if you intend to go the HackerRank way, I strongly recommend th
 to solve the challenges on your own. If you have great problems with some (passing HakkerRank test
 cases is not a guarantee to see your solution being accepted, I have been there), then take a look
 at the proposed solution, work on it, understand it and find your own way to resolve based on this
-new information. Believe, it does worth the pain.
+new information. Believe me, it does worth the pain.
