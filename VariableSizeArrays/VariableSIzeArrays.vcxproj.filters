@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="container3.cpp">
+    <ClCompile Include="VariableSizeArrays.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
