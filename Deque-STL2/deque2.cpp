@@ -3,6 +3,22 @@
 
 using namespace std;
 
+/*
+ * Algorithm
+ * ---------
+ * We build the first k-sized window and we store on the fly the index
+ * of the current maximum.
+ * Once done we treat the rest of the array an element at a time.
+ * First, we print the current maximum.
+ * If the current element in the array will be part of a new window, we 
+ * check that the elements at the beginning of the deque are stil part of
+ * it. If not we throw them away.
+ * If the current array element is in the k-sized window, we compare it
+ * with the most recently added element in the deque and if it is greater
+ * we just through away that deque element as there is absolutely no chances
+ * that it becomes a maximum of one of the following window it will be member
+ * of.
+ */
 void printKMax(int arr[], int n, int k) {
     //Write your code here.
     deque<int> index_window_max;
