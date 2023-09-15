@@ -28,7 +28,13 @@ vector<int> dynamicArray(int n, vector<vector<int>> queries) {
     int lastAnswer{};
     vector<int> answer{};
 
-    for (auto query : queries)
+    /*
+     * One could be tempted to use struct-binding here but it won't work
+     * here the compiler needs to know the actual size of the elements
+     * of queries and it is not the case here. Using array<int> would
+     * work though.
+     */
+    for (auto& query : queries)
     {
         switch (query[0])
         {
