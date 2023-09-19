@@ -9,7 +9,7 @@
 
 using namespace std;
 
-const string test_string{ "<div><p>Blabla</div>" };
+const string test_string{ "<div><p>Blabla</p></div>" };
 
 string ValidateHTMLElement(string str)
 {
@@ -60,8 +60,6 @@ string ValidateHTMLElement(string str)
                 extract = extract.substr(off + 1);
                 if (tags.size() && (tag != tags.back()))
                     return tags.back();
-                else
-                    return "";
                 tags.pop_back();
             }
         }
@@ -70,13 +68,21 @@ string ValidateHTMLElement(string str)
             /*
             * It is a value.
              */
-            auto off = extract.find_first_of('<', 1);
-            if (off == string::npos)
-                return "";
+            if (tags.size())
+            {
+                /*
+                 * It should be preceded by, at least, an opening tag. 
+                 */
+                auto off = extract.find_first_of('<', 1);
+                if (off == string::npos)
+                    return "";
 
-            auto value = extract.substr(0, off);
-            extract = extract.substr(off);
-            values.push_back(value);
+                auto value = extract.substr(0, off);
+                extract = extract.substr(off);
+                values.push_back(value);
+            }
+            else
+                return "";
         }
     }
 
