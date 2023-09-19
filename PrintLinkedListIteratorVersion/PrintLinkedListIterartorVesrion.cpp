@@ -75,6 +75,7 @@ SinglyLinkedListIterator::reference SinglyLinkedListIterator::operator*() const
 {
     return *node_;
 }
+
 SinglyLinkedListIterator& SinglyLinkedListIterator::operator++()
 {
     node_ = node_->next;
