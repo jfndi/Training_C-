@@ -11,12 +11,12 @@ using namespace std;
 
 const string test_string{ "<div><p>Blabla</div>" };
 
-int main()
+string ValidateHTMLElement(string str)
 {
     vector<string> tags{};
     vector<string> values{};
 
-    string extract = test_string;
+    string extract = str;
 
     while (extract.length())
     {
@@ -37,8 +37,10 @@ int main()
                 }
                 else
                 {
-                    cout << "Invalid format.\n";
-                    return EXIT_FAILURE;
+                    if (tags.size())
+                        return tags.back();
+                    else
+                        return "";
                 }
             }
             else
@@ -49,16 +51,17 @@ int main()
                 auto off = extract.find_first_of('>', 1);
                 if (off == string::npos)
                 {
-                    cout << "Invalid format.\n";
-                    return EXIT_FAILURE;
+                    if (tags.size())
+                        return tags.back();
+                    else
+                        return "";
                 }
                 tag = extract.substr(2, off - 2);
                 extract = extract.substr(off + 1);
-                if (tag != tags.back())
-                {
-                    cout << "Invalid format.\n";
-                    return EXIT_FAILURE;
-                }
+                if (tags.size() && (tag != tags.back()))
+                    return tags.back();
+                else
+                    return "";
                 tags.pop_back();
             }
         }
@@ -69,16 +72,25 @@ int main()
              */
             auto off = extract.find_first_of('<', 1);
             if (off == string::npos)
-            {
-                cout << "Invalid format.\n";
-                return EXIT_FAILURE;
-            }
+                return "";
+
             auto value = extract.substr(0, off);
-            cout << "Value: " << value << endl;
             extract = extract.substr(off);
             values.push_back(value);
         }
     }
+
+    if (values.size())
+        return values.back();
+    else
+        return "";
+}
+
+int main()
+{
+    string result{};
+
+    result = ValidateHTMLElement(test_string);
 
     return EXIT_SUCCESS;
 }
