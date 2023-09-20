@@ -63,6 +63,7 @@ public:
     reference operator*() const;
     pointer operator->() const { return &(operator*()); }
     SinglyLinkedListIterator& operator++();
+    SinglyLinkedListIterator operator++(int);
     bool operator==(const SinglyLinkedListIterator& other) const;
     bool operator!=(const SinglyLinkedListIterator& other) const { return !operator==(other); }
 
@@ -80,6 +81,13 @@ SinglyLinkedListIterator& SinglyLinkedListIterator::operator++()
 {
     node_ = node_->next;
     return *this;
+}
+
+SinglyLinkedListIterator SinglyLinkedListIterator::operator++(int)
+{
+    auto tmp = *this;
+    node_ = node_->next;
+    return tmp;
 }
 
 bool SinglyLinkedListIterator::operator==(const SinglyLinkedListIterator& other) const
